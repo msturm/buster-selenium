@@ -40,6 +40,7 @@ class BusterJSSlaveLayer(BusterJSServerLayer):
 
     @classmethod
     def setUp(cls):
+        BusterJSServerLayer.setUp()
         browser_executable = os.environ.get(
             'BUSTER_SLAVE_BROWSER_EXECUTABLE', None)
         if browser_executable is not None:
@@ -103,3 +104,4 @@ class BusterJSSlaveLayer(BusterJSServerLayer):
         elif hasattr(cls, 'driver'):
             cls.driver.quit()
             del cls.driver
+        BusterJSServerLayer.tearDown()
